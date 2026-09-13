@@ -1,0 +1,18 @@
+# Compiled files
+*.exe
+*.o
+
+# Object files
+obj/
+
+# Generated binary data
+data/*.dat
+
+# Backup files
+backup/*
+
+# VS Code settings
+.vscode/
+
+# Temporary files
+*.tmp
