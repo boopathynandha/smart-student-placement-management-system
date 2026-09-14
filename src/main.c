@@ -5,7 +5,12 @@
 #include "../include/drive.h"
 #include "../include/eligibility.h"
 #include "../include/application.h"
+#include "../include/selection.h"
 
+
+/*
+ * Display Main Menu
+ */
 
 void displayMenu(void)
 {
@@ -14,7 +19,10 @@ void displayMenu(void)
     printf("=========================================\n");
 
 
+    /* Student Management */
+
     printf("\n========== Student Management ==========\n");
+
     printf("1. Add Student\n");
     printf("2. View Students\n");
     printf("3. Search Student\n");
@@ -22,7 +30,10 @@ void displayMenu(void)
     printf("5. Delete Student\n");
 
 
+    /* Company Management */
+
     printf("\n========== Company Management ==========\n");
+
     printf("6. Add Company\n");
     printf("7. View Companies\n");
     printf("8. Search Company\n");
@@ -30,7 +41,10 @@ void displayMenu(void)
     printf("10. Delete Company\n");
 
 
+    /* Placement Drive Management */
+
     printf("\n====== Placement Drive Management ======\n");
+
     printf("11. Add Placement Drive\n");
     printf("12. View Placement Drives\n");
     printf("13. Search Placement Drive\n");
@@ -38,11 +52,17 @@ void displayMenu(void)
     printf("15. Delete Placement Drive\n");
 
 
+    /* Eligibility Management */
+
     printf("\n====== Eligibility Management ======\n");
+
     printf("16. Automatic Eligibility Checker\n");
 
 
+    /* Application Management */
+
     printf("\n====== Application Management ======\n");
+
     printf("17. Add Student Application\n");
     printf("18. View Applications\n");
     printf("19. Search Application\n");
@@ -50,9 +70,26 @@ void displayMenu(void)
     printf("21. Delete Application\n");
 
 
+    /* Selection Round Management */
+
+    printf("\n====== Selection Round Management ======\n");
+
+    printf("22. Add Selection Round\n");
+    printf("23. View Selection Rounds\n");
+    printf("24. Search Selection Round\n");
+    printf("25. Update Selection Round\n");
+    printf("26. Delete Selection Round\n");
+
+
+    /* Exit */
+
     printf("\n0. Exit\n");
 }
 
+
+/*
+ * Main Function
+ */
 
 int main(void)
 {
@@ -61,8 +98,12 @@ int main(void)
 
     do
     {
+        /* Display menu */
+
         displayMenu();
 
+
+        /* Get user choice */
 
         printf("\nEnter your choice: ");
 
@@ -72,9 +113,11 @@ int main(void)
             printf("\nInvalid input. Please enter a number.\n");
 
 
+            /* Clear invalid input */
+
             while (getchar() != '\n')
             {
-                /* Clear invalid input */
+                /* Clear input buffer */
             }
 
 
@@ -82,15 +125,24 @@ int main(void)
         }
 
 
+        /* Clear input buffer */
+
         while (getchar() != '\n')
         {
             /* Clear input buffer */
         }
 
 
+        /*
+         * Perform selected operation
+         */
+
         switch (choice)
         {
-            /* Student Management */
+
+            /* ============================= */
+            /* Student Management             */
+            /* ============================= */
 
             case 1:
                 addStudent();
@@ -113,7 +165,9 @@ int main(void)
                 break;
 
 
-            /* Company Management */
+            /* ============================= */
+            /* Company Management             */
+            /* ============================= */
 
             case 6:
                 addCompany();
@@ -136,7 +190,9 @@ int main(void)
                 break;
 
 
-            /* Placement Drive Management */
+            /* ============================= */
+            /* Placement Drive Management     */
+            /* ============================= */
 
             case 11:
                 addDrive();
@@ -159,14 +215,18 @@ int main(void)
                 break;
 
 
-            /* Eligibility Management */
+            /* ============================= */
+            /* Eligibility Management          */
+            /* ============================= */
 
             case 16:
                 eligibilityChecker();
                 break;
 
 
-            /* Application Management */
+            /* ============================= */
+            /* Application Management          */
+            /* ============================= */
 
             case 17:
                 addApplication();
@@ -189,15 +249,51 @@ int main(void)
                 break;
 
 
-            /* Exit */
+            /* ============================= */
+            /* Selection Round Management      */
+            /* ============================= */
 
-            case 0:
-                printf("\nThank you for using Smart Student Placement Management System!\n");
+            case 22:
+                addSelectionRound();
+                break;
+
+            case 23:
+                viewSelectionRounds();
+                break;
+
+            case 24:
+                searchSelectionRound();
+                break;
+
+            case 25:
+                updateSelectionRound();
+                break;
+
+            case 26:
+                deleteSelectionRound();
                 break;
 
 
+            /* ============================= */
+            /* Exit                            */
+            /* ============================= */
+
+            case 0:
+
+                printf("\nThank you for using Smart Student Placement Management System!\n");
+
+                break;
+
+
+            /* ============================= */
+            /* Invalid Choice                  */
+            /* ============================= */
+
             default:
+
                 printf("\nInvalid choice. Please try again.\n");
+
+                break;
         }
 
 
