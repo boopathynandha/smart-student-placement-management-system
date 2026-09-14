@@ -2,55 +2,74 @@
 
 #include "../include/student.h"
 #include "../include/company.h"
-#include "../include/utils.h"
+#include "../include/drive.h"
+#include "../include/eligibility.h"
 
 
-int main(void) {
+void displayMenu(void)
+{
+    printf("\n=========================================\n");
+    printf(" Smart Student Placement Management System\n");
+    printf("=========================================\n");
 
+    printf("\n========== Student Management ==========\n");
+    printf("1. Add Student\n");
+    printf("2. View Students\n");
+    printf("3. Search Student\n");
+    printf("4. Update Student\n");
+    printf("5. Delete Student\n");
+
+    printf("\n========== Company Management ==========\n");
+    printf("6. Add Company\n");
+    printf("7. View Companies\n");
+    printf("8. Search Company\n");
+    printf("9. Update Company\n");
+    printf("10. Delete Company\n");
+
+    printf("\n====== Placement Drive Management ======\n");
+    printf("11. Add Placement Drive\n");
+    printf("12. View Placement Drives\n");
+    printf("13. Search Placement Drive\n");
+    printf("14. Update Placement Drive\n");
+    printf("15. Delete Placement Drive\n");
+
+    printf("\n====== Eligibility Management ======\n");
+    printf("16. Automatic Eligibility Checker\n");
+
+    printf("\n0. Exit\n");
+}
+
+
+int main(void)
+{
     int choice;
 
-    while (1) {
-
-        printf("\n=========================================\n");
-        printf(" Smart Student Placement Management System\n");
-        printf("=========================================\n");
-
-
-        printf("\n========== Student Management ==========\n");
-        printf("1. Add Student\n");
-        printf("2. View Students\n");
-        printf("3. Search Student\n");
-        printf("4. Update Student\n");
-        printf("5. Delete Student\n");
-
-
-        printf("\n========== Company Management ==========\n");
-        printf("6. Add Company\n");
-        printf("7. View Companies\n");
-        printf("8. Search Company\n");
-        printf("9. Update Company\n");
-        printf("10. Delete Company\n");
-
-
-        printf("\n0. Exit\n");
+    do
+    {
+        displayMenu();
 
         printf("\nEnter your choice: ");
 
+        if (scanf("%d", &choice) != 1)
+        {
+            printf("\nInvalid input. Please enter a number.\n");
 
-        if (scanf("%d", &choice) != 1) {
+            while (getchar() != '\n')
+            {
+                /* Clear invalid input */
+            }
 
-            printf("Invalid input. Please enter a number.\n");
-            clearInputBuffer();
             continue;
         }
 
+        while (getchar() != '\n')
+        {
+            /* Clear input buffer */
+        }
 
-        clearInputBuffer();
-
-
-        switch (choice) {
-
-            /* Student Management */
+        switch (choice)
+        {
+            /* ================= STUDENT ================= */
 
             case 1:
                 addStudent();
@@ -73,7 +92,7 @@ int main(void) {
                 break;
 
 
-            /* Company Management */
+            /* ================= COMPANY ================= */
 
             case 6:
                 addCompany();
@@ -96,22 +115,47 @@ int main(void) {
                 break;
 
 
-            /* Exit */
+            /* ================= PLACEMENT DRIVE ================= */
+
+            case 11:
+                addDrive();
+                break;
+
+            case 12:
+                viewDrives();
+                break;
+
+            case 13:
+                searchDrive();
+                break;
+
+            case 14:
+                updateDrive();
+                break;
+
+            case 15:
+                deleteDrive();
+                break;
+
+
+            /* ================= ELIGIBILITY ================= */
+
+            case 16:
+                eligibilityChecker();
+                break;
+
+
+            /* ================= EXIT ================= */
 
             case 0:
-
-                printf("\nExiting program...\n");
-                return 0;
-
+                printf("\nThank you for using Smart Student Placement Management System!\n");
+                break;
 
             default:
-
-                printf(
-                    "\nInvalid choice. Please try again.\n"
-                );
+                printf("\nInvalid choice. Please try again.\n");
         }
-    }
 
+    } while (choice != 0);
 
     return 0;
 }
