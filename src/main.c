@@ -6,6 +6,7 @@
 #include "../include/eligibility.h"
 #include "../include/application.h"
 #include "../include/selection.h"
+#include "../include/skillgap.h"
 
 
 /*
@@ -81,6 +82,13 @@ void displayMenu(void)
     printf("26. Delete Selection Round\n");
 
 
+    /* Skill Gap Management */
+
+    printf("\n====== Skill Gap Management ======\n");
+
+    printf("27. Skill Gap Analyzer\n");
+
+
     /* Exit */
 
     printf("\n0. Exit\n");
@@ -98,12 +106,12 @@ int main(void)
 
     do
     {
-        /* Display menu */
+        /* Display Main Menu */
 
         displayMenu();
 
 
-        /* Get user choice */
+        /* Get User Choice */
 
         printf("\nEnter your choice: ");
 
@@ -134,7 +142,7 @@ int main(void)
 
 
         /*
-         * Perform selected operation
+         * Execute Selected Operation
          */
 
         switch (choice)
@@ -271,6 +279,15 @@ int main(void)
 
             case 26:
                 deleteSelectionRound();
+                break;
+
+
+            /* ============================= */
+            /* Skill Gap Management            */
+            /* ============================= */
+
+            case 27:
+                analyzeSkillGap();
                 break;
 
 
