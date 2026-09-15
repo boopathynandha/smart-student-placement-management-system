@@ -270,13 +270,16 @@ void addApplication(void)
         {
             printf("\n");
             printf("-----------------------------------------------\n");
+
             printf(
                 "Student is NOT eligible "
                 "for this placement drive.\n"
             );
+
             printf(
                 "Application cannot be created.\n"
             );
+
             printf("-----------------------------------------------\n");
 
             return;
@@ -429,28 +432,59 @@ void viewApplications(void)
 
 
 /* =========================================================
-   Search Application
+   Display Single Application Details
    ========================================================= */
 
-void searchApplication(void)
+static void displayApplication(
+    const Application *application)
 {
-    Application applications[MAX_RECORDS];
+    printf(
+        "\n----------------------------------------\n"
+    );
 
+    printf(
+        "Application ID   : %s\n",
+        application->id
+    );
+
+    printf(
+        "Student ID       : %s\n",
+        application->studentID
+    );
+
+    printf(
+        "Drive ID         : %s\n",
+        application->driveID
+    );
+
+    printf(
+        "Application Date : %s\n",
+        application->applicationDate
+    );
+
+    printf(
+        "Status           : %s\n",
+        application->status
+    );
+
+    printf(
+        "----------------------------------------\n"
+    );
+}
+
+
+/* =========================================================
+   Search by Application ID
+   ========================================================= */
+
+static void searchByApplicationID(
+    Application applications[],
+    int count)
+{
     char applicationID[ID_LEN];
 
-    int count = readAllRecords(
-        APPLICATION_FILE,
-        applications,
-        sizeof(Application),
-        MAX_RECORDS
-    );
-
     printf(
-        "\n========== Search Application ==========\n"
-    );
-
-    printf(
-        "Enter Application ID: "
+        "\nEnter Application ID: "
     );
 
     fgets(
@@ -471,37 +505,8 @@ void searchApplication(void)
                 "\nApplication Found!\n"
             );
 
-            printf(
-                "----------------------------------------\n"
-            );
-
-            printf(
-                "Application ID   : %s\n",
-                applications[i].id
-            );
-
-            printf(
-                "Student ID       : %s\n",
-                applications[i].studentID
-            );
-
-            printf(
-                "Drive ID         : %s\n",
-                applications[i].driveID
-            );
-
-            printf(
-                "Application Date : %s\n",
-                applications[i].applicationDate
-            );
-
-            printf(
-                "Status           : %s\n",
-                applications[i].status
-            );
-
-            printf(
-                "----------------------------------------\n"
+            displayApplication(
+                &applications[i]
             );
 
             return;
@@ -512,6 +517,219 @@ void searchApplication(void)
         "\nApplication ID '%s' not found.\n",
         applicationID
     );
+}
+
+
+/* =========================================================
+   Search by Student ID
+   ========================================================= */
+
+static void searchByStudentID(
+    Application applications[],
+    int count)
+{
+    char studentID[ID_LEN];
+    int found = 0;
+
+    printf(
+        "\nEnter Student ID: "
+    );
+
+    fgets(
+        studentID,
+        ID_LEN,
+        stdin
+    );
+
+    trimNewline(studentID);
+
+    printf(
+        "\n========== Applications for Student %s ==========\n",
+        studentID
+    );
+
+    for (int i = 0; i < count; i++)
+    {
+        if (strcmp(
+                applications[i].studentID,
+                studentID) == 0)
+        {
+            displayApplication(
+                &applications[i]
+            );
+
+            found = 1;
+        }
+    }
+
+    if (!found)
+    {
+        printf(
+            "\nNo applications found for Student ID '%s'.\n",
+            studentID
+        );
+    }
+}
+
+
+/* =========================================================
+   Search by Drive ID
+   ========================================================= */
+
+static void searchByDriveID(
+    Application applications[],
+    int count)
+{
+    char driveID[ID_LEN];
+    int found = 0;
+
+    printf(
+        "\nEnter Drive ID: "
+    );
+
+    fgets(
+        driveID,
+        ID_LEN,
+        stdin
+    );
+
+    trimNewline(driveID);
+
+    printf(
+        "\n========== Applications for Drive %s ==========\n",
+        driveID
+    );
+
+    for (int i = 0; i < count; i++)
+    {
+        if (strcmp(
+                applications[i].driveID,
+                driveID) == 0)
+        {
+            displayApplication(
+                &applications[i]
+            );
+
+            found = 1;
+        }
+    }
+
+    if (!found)
+    {
+        printf(
+            "\nNo applications found for Drive ID '%s'.\n",
+            driveID
+        );
+    }
+}
+
+
+/* =========================================================
+   Search Application
+   ========================================================= */
+
+void searchApplication(void)
+{
+    Application applications[MAX_RECORDS];
+
+    int count = readAllRecords(
+        APPLICATION_FILE,
+        applications,
+        sizeof(Application),
+        MAX_RECORDS
+    );
+
+    int choice;
+
+    if (count <= 0)
+    {
+        printf(
+            "\n========== Search Application ==========\n"
+        );
+
+        printf(
+            "\nNo applications found.\n"
+        );
+
+        return;
+    }
+
+
+    while (1)
+    {
+        printf("\n");
+        printf("====================================================\n");
+        printf("             SEARCH APPLICATION\n");
+        printf("====================================================\n");
+
+        printf(
+            "\n1. Search by Application ID\n"
+        );
+
+        printf(
+            "2. Search by Student ID\n"
+        );
+
+        printf(
+            "3. Search by Drive ID\n"
+        );
+
+        printf(
+            "4. Back\n"
+        );
+
+        printf(
+            "\nEnter your choice: "
+        );
+
+        if (scanf("%d", &choice) != 1)
+        {
+            printf(
+                "\nInvalid choice. "
+                "Please enter a number.\n"
+            );
+
+            clearInputBuffer();
+
+            continue;
+        }
+
+        clearInputBuffer();
+
+
+        switch (choice)
+        {
+            case 1:
+                searchByApplicationID(
+                    applications,
+                    count
+                );
+                break;
+
+            case 2:
+                searchByStudentID(
+                    applications,
+                    count
+                );
+                break;
+
+            case 3:
+                searchByDriveID(
+                    applications,
+                    count
+                );
+                break;
+
+            case 4:
+                return;
+
+            default:
+                printf(
+                    "\nInvalid choice. "
+                    "Please try again.\n"
+                );
+        }
+    }
 }
 
 
