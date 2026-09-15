@@ -8,6 +8,7 @@
 #include "../include/selection.h"
 #include "../include/skillgap.h"
 #include "../include/matching.h"
+#include "../include/preparation.h"
 
 
 /*
@@ -97,6 +98,17 @@ void displayMenu(void)
     printf("28. Company Matching / Recommendation\n");
 
 
+    /* Placement Preparation */
+
+    printf("\n====== Placement Preparation ======\n");
+
+    printf("29. Add Preparation Record\n");
+    printf("30. View Preparation Records\n");
+    printf("31. Search Preparation Record\n");
+    printf("32. Update Preparation Record\n");
+    printf("33. Delete Preparation Record\n");
+
+
     /* Exit */
 
     printf("\n0. Exit\n");
@@ -114,22 +126,30 @@ int main(void)
 
     do
     {
-        /* Display Main Menu */
+        /*
+         * Display Main Menu
+         */
 
         displayMenu();
 
 
-        /* Get User Choice */
+        /*
+         * Get User Choice
+         */
 
         printf("\nEnter your choice: ");
 
 
         if (scanf("%d", &choice) != 1)
         {
-            printf("\nInvalid input. Please enter a number.\n");
+            printf(
+                "\nInvalid input. Please enter a number.\n"
+            );
 
 
-            /* Clear invalid input */
+            /*
+             * Clear invalid input
+             */
 
             while (getchar() != '\n')
             {
@@ -141,7 +161,9 @@ int main(void)
         }
 
 
-        /* Clear input buffer */
+        /*
+         * Clear input buffer
+         */
 
         while (getchar() != '\n')
         {
@@ -309,13 +331,39 @@ int main(void)
 
 
             /* ============================= */
+            /* Placement Preparation         */
+            /* ============================= */
+
+            case 29:
+                addPreparation();
+                break;
+
+            case 30:
+                viewPreparations();
+                break;
+
+            case 31:
+                searchPreparation();
+                break;
+
+            case 32:
+                updatePreparation();
+                break;
+
+            case 33:
+                deletePreparation();
+                break;
+
+
+            /* ============================= */
             /* Exit                           */
             /* ============================= */
 
             case 0:
 
                 printf(
-                    "\nThank you for using Smart Student Placement Management System!\n"
+                    "\nThank you for using "
+                    "Smart Student Placement Management System!\n"
                 );
 
                 break;
