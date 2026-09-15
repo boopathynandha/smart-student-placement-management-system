@@ -13,11 +13,9 @@
 #include "../include/report.h"
 #include "../include/backup.h"
 #include "../include/admin.h"
+#include "../include/dashboard.h"
 
 
-/*
- * Display the main menu.
- */
 void displayMenu(void)
 {
     printf("\n");
@@ -99,13 +97,14 @@ void displayMenu(void)
     printf("37. Restore Data\n");
 
 
+    printf("\n====== Student Dashboard ======\n");
+    printf("38. Student Placement Dashboard\n");
+
+
     printf("\n0. Exit\n");
 }
 
 
-/*
- * Main function.
- */
 int main(void)
 {
     int choice;
@@ -113,15 +112,15 @@ int main(void)
 
     /*
      * Phase 14:
-     * Create admin account if it does not exist.
+     * Create admin account during first run.
      */
     setupAdmin();
 
 
     /*
      * Phase 14:
-     * Login required before accessing
-     * the placement management system.
+     * Admin login is required before
+     * accessing the main system.
      */
     if (!adminLogin())
     {
@@ -145,7 +144,10 @@ int main(void)
          */
         if (scanf("%d", &choice) != 1)
         {
-            printf("\nInvalid input. Please enter a number.\n");
+            printf(
+                "\nInvalid input. "
+                "Please enter a number.\n"
+            );
 
 
             while (getchar() != '\n')
@@ -355,6 +357,15 @@ int main(void)
                 break;
 
 
+            /*
+             * Phase 15:
+             * Student Placement Dashboard.
+             */
+            case 38:
+                displayStudentDashboard();
+                break;
+
+
             case 0:
                 printf(
                     "\nThank you for using "
@@ -365,7 +376,8 @@ int main(void)
 
             default:
                 printf(
-                    "\nInvalid choice. Please try again.\n"
+                    "\nInvalid choice. "
+                    "Please try again.\n"
                 );
                 break;
         }
