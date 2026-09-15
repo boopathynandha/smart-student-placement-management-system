@@ -14,8 +14,12 @@
 #include "../include/backup.h"
 #include "../include/admin.h"
 #include "../include/dashboard.h"
+#include "../include/advanced_search.h"
 
 
+/*
+ * Display the main menu.
+ */
 void displayMenu(void)
 {
     printf("\n");
@@ -101,10 +105,24 @@ void displayMenu(void)
     printf("38. Student Placement Dashboard\n");
 
 
+    /*
+     * Phase 16:
+     * Advanced Student Search & Filtering.
+     */
+    printf("\n====== Advanced Student Search ======\n");
+    printf("39. Search Students by Department\n");
+    printf("40. Filter Students by Minimum CGPA\n");
+    printf("41. Search Students by Skill\n");
+    printf("42. Find Eligible Students for a Drive\n");
+
+
     printf("\n0. Exit\n");
 }
 
 
+/*
+ * Main function.
+ */
 int main(void)
 {
     int choice;
@@ -112,7 +130,8 @@ int main(void)
 
     /*
      * Phase 14:
-     * Create admin account during first run.
+     * Create the first admin account if
+     * it does not already exist.
      */
     setupAdmin();
 
@@ -120,7 +139,7 @@ int main(void)
     /*
      * Phase 14:
      * Admin login is required before
-     * accessing the main system.
+     * accessing the system.
      */
     if (!adminLogin())
     {
@@ -129,7 +148,7 @@ int main(void)
 
 
     /*
-     * Main system menu.
+     * Main menu loop.
      */
     do
     {
@@ -150,6 +169,9 @@ int main(void)
             );
 
 
+            /*
+             * Clear invalid input.
+             */
             while (getchar() != '\n')
             {
             }
@@ -363,6 +385,30 @@ int main(void)
              */
             case 38:
                 displayStudentDashboard();
+                break;
+
+
+            /*
+             * Phase 16:
+             * Advanced Student Search & Filtering.
+             */
+            case 39:
+                searchStudentsByDepartment();
+                break;
+
+
+            case 40:
+                filterStudentsByCGPA();
+                break;
+
+
+            case 41:
+                searchStudentsBySkill();
+                break;
+
+
+            case 42:
+                findEligibleStudentsForDrive();
                 break;
 
 
