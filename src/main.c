@@ -11,6 +11,7 @@
 #include "../include/preparation.h"
 #include "../include/statistics.h"
 #include "../include/report.h"
+#include "../include/backup.h"
 
 
 /*
@@ -134,6 +135,15 @@ void displayMenu(void)
     printf("\n====== Reports ======\n");
 
     printf("35. Generate Placement Report\n");
+
+
+    /*
+     * Backup and Restore
+     */
+    printf("\n====== Backup & Restore ======\n");
+
+    printf("36. Backup Data\n");
+    printf("37. Restore Data\n");
 
 
     /*
@@ -387,6 +397,24 @@ int main(void)
 
 
             /*
+             * Backup Data
+             */
+
+            case 36:
+                backupData();
+                break;
+
+
+            /*
+             * Restore Data
+             */
+
+            case 37:
+                restoreData();
+                break;
+
+
+            /*
              * Exit
              */
 
@@ -399,7 +427,7 @@ int main(void)
 
 
             /*
-             * Invalid choice
+             * Invalid Choice
              */
 
             default:
