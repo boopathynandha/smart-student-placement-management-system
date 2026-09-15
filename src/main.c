@@ -12,10 +12,11 @@
 #include "../include/statistics.h"
 #include "../include/report.h"
 #include "../include/backup.h"
+#include "../include/admin.h"
 
 
 /*
- * Display Main Menu
+ * Display the main menu.
  */
 void displayMenu(void)
 {
@@ -25,11 +26,7 @@ void displayMenu(void)
     printf("=================================================\n");
 
 
-    /*
-     * Student Management
-     */
     printf("\n========== Student Management ==========\n");
-
     printf("1. Add Student\n");
     printf("2. View Students\n");
     printf("3. Search Student\n");
@@ -37,11 +34,7 @@ void displayMenu(void)
     printf("5. Delete Student\n");
 
 
-    /*
-     * Company Management
-     */
     printf("\n========== Company Management ==========\n");
-
     printf("6. Add Company\n");
     printf("7. View Companies\n");
     printf("8. Search Company\n");
@@ -49,11 +42,7 @@ void displayMenu(void)
     printf("10. Delete Company\n");
 
 
-    /*
-     * Placement Drive Management
-     */
     printf("\n====== Placement Drive Management ======\n");
-
     printf("11. Add Placement Drive\n");
     printf("12. View Placement Drives\n");
     printf("13. Search Placement Drive\n");
@@ -61,19 +50,11 @@ void displayMenu(void)
     printf("15. Delete Placement Drive\n");
 
 
-    /*
-     * Eligibility Management
-     */
     printf("\n====== Eligibility Management ======\n");
-
     printf("16. Automatic Eligibility Checker\n");
 
 
-    /*
-     * Application Management
-     */
     printf("\n====== Application Management ======\n");
-
     printf("17. Add Student Application\n");
     printf("18. View Applications\n");
     printf("19. Search Application\n");
@@ -81,11 +62,7 @@ void displayMenu(void)
     printf("21. Delete Application\n");
 
 
-    /*
-     * Selection Round Management
-     */
     printf("\n====== Selection Round Management ======\n");
-
     printf("22. Add Selection Round\n");
     printf("23. View Selection Rounds\n");
     printf("24. Search Selection Round\n");
@@ -93,27 +70,15 @@ void displayMenu(void)
     printf("26. Delete Selection Round\n");
 
 
-    /*
-     * Skill Gap Management
-     */
     printf("\n====== Skill Gap Management ======\n");
-
     printf("27. Skill Gap Analyzer\n");
 
 
-    /*
-     * Company Matching
-     */
     printf("\n====== Company Matching ======\n");
-
     printf("28. Company Matching / Recommendation\n");
 
 
-    /*
-     * Placement Preparation
-     */
     printf("\n====== Placement Preparation ======\n");
-
     printf("29. Add Preparation Record\n");
     printf("30. View Preparation Records\n");
     printf("31. Search Preparation Record\n");
@@ -121,75 +86,79 @@ void displayMenu(void)
     printf("33. Delete Preparation Record\n");
 
 
-    /*
-     * Placement Statistics
-     */
     printf("\n====== Placement Statistics ======\n");
-
     printf("34. View Placement Statistics\n");
 
 
-    /*
-     * Reports
-     */
     printf("\n====== Reports ======\n");
-
     printf("35. Generate Placement Report\n");
 
 
-    /*
-     * Backup and Restore
-     */
     printf("\n====== Backup & Restore ======\n");
-
     printf("36. Backup Data\n");
     printf("37. Restore Data\n");
 
 
-    /*
-     * Exit
-     */
     printf("\n0. Exit\n");
 }
 
 
 /*
- * Main Function
+ * Main function.
  */
 int main(void)
 {
     int choice;
 
+
+    /*
+     * Phase 14:
+     * Create admin account if it does not exist.
+     */
+    setupAdmin();
+
+
+    /*
+     * Phase 14:
+     * Login required before accessing
+     * the placement management system.
+     */
+    if (!adminLogin())
+    {
+        return 0;
+    }
+
+
+    /*
+     * Main system menu.
+     */
     do
     {
-        /*
-         * Display Main Menu
-         */
         displayMenu();
+
 
         printf("\nEnter your choice: ");
 
 
         /*
-         * Validate menu input
+         * Validate menu input.
          */
         if (scanf("%d", &choice) != 1)
         {
             printf("\nInvalid input. Please enter a number.\n");
 
-            /*
-             * Clear invalid input
-             */
+
             while (getchar() != '\n')
             {
             }
+
 
             continue;
         }
 
 
         /*
-         * Clear remaining input
+         * Clear remaining input.
          */
         while (getchar() != '\n')
         {
@@ -197,226 +166,194 @@ int main(void)
 
 
         /*
-         * Process menu choice
+         * Process menu choice.
          */
         switch (choice)
         {
-            /*
-             * Student Management
-             */
-
             case 1:
                 addStudent();
                 break;
+
 
             case 2:
                 viewStudents();
                 break;
 
+
             case 3:
                 searchStudent();
                 break;
 
+
             case 4:
                 updateStudent();
                 break;
+
 
             case 5:
                 deleteStudent();
                 break;
 
 
-            /*
-             * Company Management
-             */
-
             case 6:
                 addCompany();
                 break;
+
 
             case 7:
                 viewCompanies();
                 break;
 
+
             case 8:
                 searchCompany();
                 break;
 
+
             case 9:
                 updateCompany();
                 break;
+
 
             case 10:
                 deleteCompany();
                 break;
 
 
-            /*
-             * Placement Drive Management
-             */
-
             case 11:
                 addDrive();
                 break;
+
 
             case 12:
                 viewDrives();
                 break;
 
+
             case 13:
                 searchDrive();
                 break;
 
+
             case 14:
                 updateDrive();
                 break;
+
 
             case 15:
                 deleteDrive();
                 break;
 
 
-            /*
-             * Eligibility Management
-             */
-
             case 16:
                 eligibilityChecker();
                 break;
 
 
-            /*
-             * Application Management
-             */
-
             case 17:
                 addApplication();
                 break;
+
 
             case 18:
                 viewApplications();
                 break;
 
+
             case 19:
                 searchApplication();
                 break;
 
+
             case 20:
                 updateApplication();
                 break;
+
 
             case 21:
                 deleteApplication();
                 break;
 
 
-            /*
-             * Selection Round Management
-             */
-
             case 22:
                 addSelectionRound();
                 break;
+
 
             case 23:
                 viewSelectionRounds();
                 break;
 
+
             case 24:
                 searchSelectionRound();
                 break;
 
+
             case 25:
                 updateSelectionRound();
                 break;
+
 
             case 26:
                 deleteSelectionRound();
                 break;
 
 
-            /*
-             * Skill Gap Analyzer
-             */
-
             case 27:
                 analyzeSkillGap();
                 break;
 
-
-            /*
-             * Company Matching / Recommendation
-             */
 
             case 28:
                 recommendCompany();
                 break;
 
 
-            /*
-             * Placement Preparation
-             */
-
             case 29:
                 addPreparation();
                 break;
+
 
             case 30:
                 viewPreparations();
                 break;
 
+
             case 31:
                 searchPreparation();
                 break;
 
+
             case 32:
                 updatePreparation();
                 break;
+
 
             case 33:
                 deletePreparation();
                 break;
 
 
-            /*
-             * Placement Statistics
-             */
-
             case 34:
                 displayPlacementStatistics();
                 break;
 
-
-            /*
-             * Reports
-             */
 
             case 35:
                 generatePlacementReport();
                 break;
 
 
-            /*
-             * Backup Data
-             */
-
             case 36:
                 backupData();
                 break;
 
 
-            /*
-             * Restore Data
-             */
-
             case 37:
                 restoreData();
                 break;
 
-
-            /*
-             * Exit
-             */
 
             case 0:
                 printf(
@@ -426,16 +363,13 @@ int main(void)
                 break;
 
 
-            /*
-             * Invalid Choice
-             */
-
             default:
                 printf(
                     "\nInvalid choice. Please try again.\n"
                 );
                 break;
         }
+
 
     } while (choice != 0);
 
