@@ -9,21 +9,23 @@
 #include "../include/skillgap.h"
 #include "../include/matching.h"
 #include "../include/preparation.h"
+#include "../include/statistics.h"
 
 
 /*
  * Display Main Menu
  */
-
 void displayMenu(void)
 {
-    printf("\n=========================================\n");
-    printf(" Smart Student Placement Management System\n");
-    printf("=========================================\n");
+    printf("\n");
+    printf("=================================================\n");
+    printf("     SMART STUDENT PLACEMENT MANAGEMENT SYSTEM\n");
+    printf("=================================================\n");
 
 
-    /* Student Management */
-
+    /*
+     * Student Management
+     */
     printf("\n========== Student Management ==========\n");
 
     printf("1. Add Student\n");
@@ -33,8 +35,9 @@ void displayMenu(void)
     printf("5. Delete Student\n");
 
 
-    /* Company Management */
-
+    /*
+     * Company Management
+     */
     printf("\n========== Company Management ==========\n");
 
     printf("6. Add Company\n");
@@ -44,8 +47,9 @@ void displayMenu(void)
     printf("10. Delete Company\n");
 
 
-    /* Placement Drive Management */
-
+    /*
+     * Placement Drive Management
+     */
     printf("\n====== Placement Drive Management ======\n");
 
     printf("11. Add Placement Drive\n");
@@ -55,15 +59,17 @@ void displayMenu(void)
     printf("15. Delete Placement Drive\n");
 
 
-    /* Eligibility Management */
-
+    /*
+     * Eligibility Management
+     */
     printf("\n====== Eligibility Management ======\n");
 
     printf("16. Automatic Eligibility Checker\n");
 
 
-    /* Application Management */
-
+    /*
+     * Application Management
+     */
     printf("\n====== Application Management ======\n");
 
     printf("17. Add Student Application\n");
@@ -73,8 +79,9 @@ void displayMenu(void)
     printf("21. Delete Application\n");
 
 
-    /* Selection Round Management */
-
+    /*
+     * Selection Round Management
+     */
     printf("\n====== Selection Round Management ======\n");
 
     printf("22. Add Selection Round\n");
@@ -84,22 +91,25 @@ void displayMenu(void)
     printf("26. Delete Selection Round\n");
 
 
-    /* Skill Gap Management */
-
+    /*
+     * Skill Gap Management
+     */
     printf("\n====== Skill Gap Management ======\n");
 
     printf("27. Skill Gap Analyzer\n");
 
 
-    /* Company Matching */
-
+    /*
+     * Company Matching
+     */
     printf("\n====== Company Matching ======\n");
 
     printf("28. Company Matching / Recommendation\n");
 
 
-    /* Placement Preparation */
-
+    /*
+     * Placement Preparation
+     */
     printf("\n====== Placement Preparation ======\n");
 
     printf("29. Add Preparation Record\n");
@@ -109,8 +119,17 @@ void displayMenu(void)
     printf("33. Delete Preparation Record\n");
 
 
-    /* Exit */
+    /*
+     * Placement Statistics
+     */
+    printf("\n====== Placement Statistics ======\n");
 
+    printf("34. View Placement Statistics\n");
+
+
+    /*
+     * Exit
+     */
     printf("\n0. Exit\n");
 }
 
@@ -118,70 +137,54 @@ void displayMenu(void)
 /*
  * Main Function
  */
-
 int main(void)
 {
     int choice;
 
-
     do
     {
         /*
-         * Display Main Menu
+         * Display menu
          */
-
         displayMenu();
-
-
-        /*
-         * Get User Choice
-         */
 
         printf("\nEnter your choice: ");
 
 
+        /*
+         * Validate menu input
+         */
         if (scanf("%d", &choice) != 1)
         {
-            printf(
-                "\nInvalid input. Please enter a number.\n"
-            );
-
+            printf("\nInvalid input. Please enter a number.\n");
 
             /*
              * Clear invalid input
              */
-
             while (getchar() != '\n')
             {
-                /* Clear input buffer */
             }
-
 
             continue;
         }
 
 
         /*
-         * Clear input buffer
+         * Clear remaining input
          */
-
         while (getchar() != '\n')
         {
-            /* Clear input buffer */
         }
 
 
         /*
-         * Execute Selected Operation
+         * Process menu choice
          */
-
         switch (choice)
         {
-
-            /* ============================= */
-            /* Student Management             */
-            /* ============================= */
-
+            /*
+             * Student Management
+             */
             case 1:
                 addStudent();
                 break;
@@ -203,10 +206,9 @@ int main(void)
                 break;
 
 
-            /* ============================= */
-            /* Company Management             */
-            /* ============================= */
-
+            /*
+             * Company Management
+             */
             case 6:
                 addCompany();
                 break;
@@ -228,10 +230,9 @@ int main(void)
                 break;
 
 
-            /* ============================= */
-            /* Placement Drive Management     */
-            /* ============================= */
-
+            /*
+             * Placement Drive Management
+             */
             case 11:
                 addDrive();
                 break;
@@ -253,19 +254,17 @@ int main(void)
                 break;
 
 
-            /* ============================= */
-            /* Eligibility Management         */
-            /* ============================= */
-
+            /*
+             * Eligibility
+             */
             case 16:
                 eligibilityChecker();
                 break;
 
 
-            /* ============================= */
-            /* Application Management         */
-            /* ============================= */
-
+            /*
+             * Application Management
+             */
             case 17:
                 addApplication();
                 break;
@@ -287,10 +286,9 @@ int main(void)
                 break;
 
 
-            /* ============================= */
-            /* Selection Round Management     */
-            /* ============================= */
-
+            /*
+             * Selection Round Management
+             */
             case 22:
                 addSelectionRound();
                 break;
@@ -312,28 +310,25 @@ int main(void)
                 break;
 
 
-            /* ============================= */
-            /* Skill Gap Management           */
-            /* ============================= */
-
+            /*
+             * Skill Gap Analyzer
+             */
             case 27:
                 analyzeSkillGap();
                 break;
 
 
-            /* ============================= */
-            /* Company Matching               */
-            /* ============================= */
-
+            /*
+             * Company Matching
+             */
             case 28:
                 recommendCompany();
                 break;
 
 
-            /* ============================= */
-            /* Placement Preparation         */
-            /* ============================= */
-
+            /*
+             * Placement Preparation
+             */
             case 29:
                 addPreparation();
                 break;
@@ -355,33 +350,34 @@ int main(void)
                 break;
 
 
-            /* ============================= */
-            /* Exit                           */
-            /* ============================= */
+            /*
+             * Placement Statistics
+             */
+            case 34:
+                displayPlacementStatistics();
+                break;
 
+
+            /*
+             * Exit
+             */
             case 0:
-
                 printf(
                     "\nThank you for using "
                     "Smart Student Placement Management System!\n"
                 );
-
                 break;
 
 
-            /* ============================= */
-            /* Invalid Choice                 */
-            /* ============================= */
-
+            /*
+             * Invalid choice
+             */
             default:
-
                 printf(
                     "\nInvalid choice. Please try again.\n"
                 );
-
                 break;
         }
-
 
     } while (choice != 0);
 
