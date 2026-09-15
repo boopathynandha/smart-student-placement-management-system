@@ -10,6 +10,7 @@
 #include "../include/matching.h"
 #include "../include/preparation.h"
 #include "../include/statistics.h"
+#include "../include/report.h"
 
 
 /*
@@ -128,6 +129,14 @@ void displayMenu(void)
 
 
     /*
+     * Reports
+     */
+    printf("\n====== Reports ======\n");
+
+    printf("35. Generate Placement Report\n");
+
+
+    /*
      * Exit
      */
     printf("\n0. Exit\n");
@@ -144,7 +153,7 @@ int main(void)
     do
     {
         /*
-         * Display menu
+         * Display Main Menu
          */
         displayMenu();
 
@@ -185,6 +194,7 @@ int main(void)
             /*
              * Student Management
              */
+
             case 1:
                 addStudent();
                 break;
@@ -209,6 +219,7 @@ int main(void)
             /*
              * Company Management
              */
+
             case 6:
                 addCompany();
                 break;
@@ -233,6 +244,7 @@ int main(void)
             /*
              * Placement Drive Management
              */
+
             case 11:
                 addDrive();
                 break;
@@ -255,8 +267,9 @@ int main(void)
 
 
             /*
-             * Eligibility
+             * Eligibility Management
              */
+
             case 16:
                 eligibilityChecker();
                 break;
@@ -265,6 +278,7 @@ int main(void)
             /*
              * Application Management
              */
+
             case 17:
                 addApplication();
                 break;
@@ -289,6 +303,7 @@ int main(void)
             /*
              * Selection Round Management
              */
+
             case 22:
                 addSelectionRound();
                 break;
@@ -313,14 +328,16 @@ int main(void)
             /*
              * Skill Gap Analyzer
              */
+
             case 27:
                 analyzeSkillGap();
                 break;
 
 
             /*
-             * Company Matching
+             * Company Matching / Recommendation
              */
+
             case 28:
                 recommendCompany();
                 break;
@@ -329,6 +346,7 @@ int main(void)
             /*
              * Placement Preparation
              */
+
             case 29:
                 addPreparation();
                 break;
@@ -353,14 +371,25 @@ int main(void)
             /*
              * Placement Statistics
              */
+
             case 34:
                 displayPlacementStatistics();
                 break;
 
 
             /*
+             * Reports
+             */
+
+            case 35:
+                generatePlacementReport();
+                break;
+
+
+            /*
              * Exit
              */
+
             case 0:
                 printf(
                     "\nThank you for using "
@@ -372,6 +401,7 @@ int main(void)
             /*
              * Invalid choice
              */
+
             default:
                 printf(
                     "\nInvalid choice. Please try again.\n"

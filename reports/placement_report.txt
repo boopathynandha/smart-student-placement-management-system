@@ -1,0 +1,54 @@
+============================================================
+       SMART STUDENT PLACEMENT MANAGEMENT SYSTEM
+                    PLACEMENT REPORT
+============================================================
+
+================ OVERALL STATISTICS ================
+
+Total Students            : 2
+Total Companies           : 0
+Total Placement Drives    : 1
+Total Applications        : 0
+Total Preparation Records : 1
+
+================ APPLICATION STATISTICS ================
+
+Applied                   : 0
+Shortlisted               : 0
+Selected                  : 0
+Rejected                  : 0
+
+================ PLACEMENT PERFORMANCE ================
+
+Placement Percentage      : 0.00%
+
+================ STUDENT DETAILS ================
+
+ID         Name                      Department      CGPA     Backlogs   Skills                        
+----------------------------------------------------------------------------------------------------
+23CSE001   Boopathy Sakthivel        CSE             9.00     0          C, C++, Python                
+23CSE002   Arun Kumar                CSE             8.50     0          C, Python, Java               
+
+================ COMPANY DETAILS ================
+
+No company records found.
+
+================ PLACEMENT DRIVE DETAILS ================
+
+Drive ID   Company ID   Drive Date      Min CGPA   Max BL     Departments          Status         
+----------------------------------------------------------------------------------------------------
+D001       C001         22-09-2026      7.50       0          CSE, IT              Upcoming       
+
+================ APPLICATION DETAILS ================
+
+No application records found.
+
+================ PREPARATION DETAILS ================
+
+ID         Student ID      Skill / Topic        Target     Completed    Status         
+--------------------------------------------------------------------------------
+P002       23CSE001        Python               40         30           Completed      
+
+============================================================
+                  END OF PLACEMENT REPORT
+============================================================
