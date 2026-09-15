@@ -7,6 +7,7 @@
 #include "../include/application.h"
 #include "../include/selection.h"
 #include "../include/skillgap.h"
+#include "../include/matching.h"
 
 
 /*
@@ -87,6 +88,13 @@ void displayMenu(void)
     printf("\n====== Skill Gap Management ======\n");
 
     printf("27. Skill Gap Analyzer\n");
+
+
+    /* Company Matching */
+
+    printf("\n====== Company Matching ======\n");
+
+    printf("28. Company Matching / Recommendation\n");
 
 
     /* Exit */
@@ -224,7 +232,7 @@ int main(void)
 
 
             /* ============================= */
-            /* Eligibility Management          */
+            /* Eligibility Management         */
             /* ============================= */
 
             case 16:
@@ -233,7 +241,7 @@ int main(void)
 
 
             /* ============================= */
-            /* Application Management          */
+            /* Application Management         */
             /* ============================= */
 
             case 17:
@@ -258,7 +266,7 @@ int main(void)
 
 
             /* ============================= */
-            /* Selection Round Management      */
+            /* Selection Round Management     */
             /* ============================= */
 
             case 22:
@@ -283,7 +291,7 @@ int main(void)
 
 
             /* ============================= */
-            /* Skill Gap Management            */
+            /* Skill Gap Management           */
             /* ============================= */
 
             case 27:
@@ -292,23 +300,36 @@ int main(void)
 
 
             /* ============================= */
-            /* Exit                            */
+            /* Company Matching               */
+            /* ============================= */
+
+            case 28:
+                recommendCompany();
+                break;
+
+
+            /* ============================= */
+            /* Exit                           */
             /* ============================= */
 
             case 0:
 
-                printf("\nThank you for using Smart Student Placement Management System!\n");
+                printf(
+                    "\nThank you for using Smart Student Placement Management System!\n"
+                );
 
                 break;
 
 
             /* ============================= */
-            /* Invalid Choice                  */
+            /* Invalid Choice                 */
             /* ============================= */
 
             default:
 
-                printf("\nInvalid choice. Please try again.\n");
+                printf(
+                    "\nInvalid choice. Please try again.\n"
+                );
 
                 break;
         }
