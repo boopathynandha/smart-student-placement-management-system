@@ -15,4 +15,4 @@ backup/*
 .vscode/
 
 # Temporary files
-*.tmp
+*.tmpreports/placement_report.txt
